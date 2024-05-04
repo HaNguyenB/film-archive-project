@@ -13,6 +13,13 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      // taken from the official NextJS fonts config page
+      extend: {
+        fontFamily: {
+          sans: ['var(--font-inter)'],
+          mono: ['var(--font-roboto-mono)'],
+        },
+      },
     },
   },
   plugins: [],
