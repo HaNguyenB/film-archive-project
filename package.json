@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "prettier-format": "prettier --config .prettierrc.json \"src/**/*.tsx\" --write"
   },
   "dependencies": {
     "next": "14.2.3",
@@ -33,7 +33,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "globals": "^15.1.0",
     "postcss": "^8.4.38",
-    "prettier": "^2.8.8",
+    "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3",
     "typescript": "^5",
