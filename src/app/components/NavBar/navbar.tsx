@@ -25,14 +25,14 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className='w-full bg-[#EED7C5]'>
+      <div className='bg-onyx w-full'>
         <IoReorderThreeOutline
           className='h-10 w-10 cursor-pointer hover:bg-sky-700'
           onClick={() => setOpen(!opened)}
         />
       </div>
       <nav
-        className={`w-50 fixed flex h-full flex-col bg-[#EEE2DF] duration-300 ease-in-out ${
+        className={`w-50 bg-rose fixed flex h-full flex-col duration-300 ease-in-out ${
           opened ? 'translate-x-0 ' : '-translate-x-full'
         }`}
       >
@@ -41,7 +41,7 @@ const Navbar = () => {
             {links.map(({ id, name, link }) => (
               <li
                 key={id}
-                className='nav-links px-4 pt-2 font-medium capitalize text-[#C89F9C] duration-200 hover:text-[#B36A5E]'
+                className='nav-links hover:text-jet px-4 pt-2 font-medium capitalize text-black duration-200'
               >
                 <Link href={link}>{name}</Link>
               </li>

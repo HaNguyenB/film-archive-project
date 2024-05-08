@@ -6,7 +6,7 @@ import Footer from './components/Footer/footer';
 
 export default function Home() {
   return (
-    <div className='flex h-screen flex-col justify-between'>
+    <div className='bg-jet flex h-screen flex-col justify-between'>
       <Navbar />
       <Footer />
     </div>
