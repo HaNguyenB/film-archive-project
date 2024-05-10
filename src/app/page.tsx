@@ -1,14 +1,9 @@
 'use client';
 
 import React from 'react';
-import Navbar from './components/NavBar/navbar';
-import Footer from './components/Footer/footer';
+import useChangeTabName from './functions/useChangeTabName';
 
 export default function Home() {
-  return (
-    <div className='bg-jet flex h-screen flex-col justify-between'>
-      <Navbar />
-      <Footer />
-    </div>
-  );
+  useChangeTabName('Home');
+  return <div className=' bg-jet'></div>;
 }
