@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 body {
-  background-color: #38353b;
+  /* background-color: #38353b; */
+  @apply bg-rose;
 }
