@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
+import clsx from 'clsx';
 import Link from 'next/link';
-import { Disclosure, Transition } from '@headlessui/react';
 
 export function RedirectEntry(props: {
   link: string;
@@ -8,8 +8,8 @@ export function RedirectEntry(props: {
   name: string;
 }) {
   return (
-    <Link href={props.link} className='flex items-center'>
-      {props.icon} {props.name}
+    <Link href={props.link} className='flex items-center space-x-2'>
+      {props.icon} <span>{props.name}</span>
     </Link>
   );
 }
@@ -27,33 +27,31 @@ interface DropdownEntryProps {
 }
 
 export function DropdownEntry(props: DropdownEntryProps) {
+  const [dropDownVisibility, setdropDownVisibility] = useState(false);
   return (
-    <Disclosure>
-      <Disclosure.Button className='flex items-center'>
-        {props.icon} {props.name}
-      </Disclosure.Button>
-      <Transition
-        enter='transition ease-out duration-100'
-        enterFrom='transform opacity-0 scale-95'
-        enterTo='transform opacity-100 scale-100'
-        leave='transition ease-in duration-75'
-        leaveFrom='transform opacity-100 scale-100'
-        leaveTo='transform opacity-0 scale-95'
+    <div className='space-y-4'>
+      <button
+        className='flex items-center space-x-2'
+        onClick={() => setdropDownVisibility((value) => !value)}
       >
-        <Disclosure.Panel className='ml-5 mt-4 p-0 text-rose'>
-          {props.array.map((entry) => (
-            <div key={entry.id} className='m-1'>
-              <Link
-                href={entry.link}
-                className='flex items-center hover:text-white'
-                scroll={false}
-              >
-                {entry.name}
-              </Link>
-            </div>
-          ))}
-        </Disclosure.Panel>
-      </Transition>
-    </Disclosure>
+        {props.icon} <span>{props.name}</span>
+      </button>
+      <div
+        className={clsx(' ml-6 space-y-2 text-rose', {
+          hidden: dropDownVisibility,
+        })}
+      >
+        {props.array.map((entry) => (
+          <Link
+            key={entry.id}
+            href={entry.link}
+            className='flex items-center duration-200 hover:text-white'
+            scroll={false}
+          >
+            {entry.name}
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 }

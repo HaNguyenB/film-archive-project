@@ -18,11 +18,11 @@ const Navbar = () => {
         )}
       >
         <div className='mx-6 h-full py-5'>
-          <ul>
+          <ul className='space-y-4'>
             {NAVLINKS.map(({ id, name, link, icon }) => (
               <li
                 key={id}
-                className='nav-links w-24 p-2 font-medium capitalize text-rose duration-200 hover:text-white'
+                className='nav-links w-24 font-medium capitalize text-rose duration-200 hover:text-white'
               >
                 {name === 'Archive' ? (
                   <DropdownEntry icon={icon} name={name} array={ARCHIVELINKS} />
