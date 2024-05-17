@@ -24,12 +24,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='bg-onyx fixed inset-x-0 bottom-0 flex h-10 w-full items-center justify-between'>
+    <footer className='fixed inset-x-0 bottom-0 flex h-10 w-full items-center justify-between bg-onyx'>
       <ul className='flex items-center'>
         {links.map(({ id, name, link }) => (
           <li
             key={id}
-            className='nav-links text-rose hover:text-platinum px-4 text-sm capitalize duration-200'
+            className='nav-links px-4 text-sm capitalize text-rose duration-200 hover:text-platinum'
           >
             {name ? (
               <Link href={link}>{name}</Link>

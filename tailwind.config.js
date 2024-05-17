@@ -15,7 +15,7 @@ module.exports = {
       white: '#fff',
       platinum: '#ebeae9',
       rose: '#b19691',
-      onyx: '#45425b',
+      onyx: '#45424b',
       jet: '#38353b',
     },
   },
