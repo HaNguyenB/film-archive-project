@@ -29,7 +29,7 @@ interface DropdownEntryProps {
 export function DropdownEntry(props: DropdownEntryProps) {
   const [dropDownVisibility, setdropDownVisibility] = useState(false);
   return (
-    <div className='space-y-4'>
+    <div className={clsx({ 'space-y-4': dropDownVisibility })}>
       <button
         className='flex items-center space-x-2'
         onClick={() => setdropDownVisibility((value) => !value)}
@@ -37,9 +37,13 @@ export function DropdownEntry(props: DropdownEntryProps) {
         {props.icon} <span>{props.name}</span>
       </button>
       <div
-        className={clsx(' ml-6 space-y-2 text-rose', {
-          hidden: dropDownVisibility,
-        })}
+        className={clsx(
+          'ml-6 space-y-2 overflow-hidden text-rose transition-all ease-in-out',
+          {
+            'max-h-40 ': dropDownVisibility,
+            'invisible max-h-0': !dropDownVisibility,
+          }
+        )}
       >
         {props.array.map((entry) => (
           <Link

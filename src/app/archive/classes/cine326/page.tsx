@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client';
 import React from 'react';
-import useChangeTabName from '@/app/functions/useChangeTabName';
+import useChangeTabName from '@/app/hooks/useChangeTabName';
 
 export default function cine326() {
   useChangeTabName('ObCine - CINE326');
