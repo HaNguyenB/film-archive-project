@@ -41,7 +41,7 @@ export function DropdownEntry(props: DropdownEntryProps) {
           'ml-6 space-y-2 overflow-hidden text-rose transition-all ease-in-out',
           {
             'max-h-40 ': dropDownVisibility,
-            'invisible max-h-0': !dropDownVisibility,
+            'invisible max-h-0 opacity-0': !dropDownVisibility,
           }
         )}
       >

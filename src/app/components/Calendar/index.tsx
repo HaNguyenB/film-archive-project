@@ -1,23 +1,21 @@
 // REFERENCE: https://github.com/VivekAlhat/Tailwind-Calendar/blob/main/src/App.tsx
 import {
   add,
-  eachDayOfInterval,
-  endOfMonth,
   endOfWeek,
   format,
   getDay,
   isSameMonth,
   isToday,
-  parse,
-  startOfMonth,
   startOfToday,
   startOfWeek,
   getWeekOfMonth,
   getMonth,
+  eachDayOfInterval,
 } from 'date-fns';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 import { capitalizeFirstLetter } from './functions';
 import { useState } from 'react';
+import clsx from 'clsx';
 
 function Calendar() {
   const today = startOfToday();
@@ -34,8 +32,6 @@ function Calendar() {
 
   const [currMonth, setCurrMonth] = useState(() => format(today, 'MMM-yyyy'));
 
-  const firstDayOfMonth = parse(currMonth, 'MMM-yyyy', new Date());
-
   // INIT: Take today as the time mark to get the first day of the current week
   const [firstDayOfCurrWeek, setfirstDayOfCurrWeek] = useState(() =>
     startOfWeek(today)
@@ -43,84 +39,58 @@ function Calendar() {
 
   const getPrevWeek = (event: React.MouseEvent<SVGSVGElement>) => {
     event.preventDefault();
-
-    let firstDayOfPrevWeek = startOfWeek(
+    const firstDayOfPrevWeek = startOfWeek(
       add(firstDayOfCurrWeek, { weeks: -1 })
     );
-    const lastDayOfPrevWeek = endOfWeek(firstDayOfPrevWeek);
-
-    // CASE 1: First day of current week = first day of month
-    if (getMonth(startOfWeek(firstDayOfCurrWeek)) !== getMonth(currMonth)) {
-      firstDayOfPrevWeek = startOfWeek(firstDayOfCurrWeek);
-      setfirstDayOfCurrWeek(firstDayOfPrevWeek);
+    setfirstDayOfCurrWeek(firstDayOfPrevWeek);
+    if (getMonth(firstDayOfPrevWeek) !== getMonth(currMonth))
       setCurrMonth(format(firstDayOfPrevWeek, 'MMM-yyyy'));
-      // CASE 2: Last day of previous week is last day of previous month
-    } else if (getMonth(lastDayOfPrevWeek) !== getMonth(currMonth)) {
-      setfirstDayOfCurrWeek(firstDayOfPrevWeek);
-      setCurrMonth(format(firstDayOfPrevWeek, 'MMM-yyyy'));
-      // CASE 3: First day of previous week = first day of month
-    } else if (getMonth(firstDayOfPrevWeek) !== getMonth(currMonth)) {
-      firstDayOfPrevWeek = firstDayOfMonth;
-      setfirstDayOfCurrWeek(firstDayOfPrevWeek);
-      setCurrMonth(format(firstDayOfPrevWeek, 'MMM-yyyy'));
-      // CASE 4: Still in current month
-    } else {
-      setfirstDayOfCurrWeek(firstDayOfPrevWeek);
-    }
   };
 
   const getNextWeek = (event: React.MouseEvent<SVGSVGElement>) => {
     event.preventDefault();
-    /* Get the first day of next week by + 1 week to the first day of the current week (Sunday)
-    EDGE CASE 1: First day of current week (firstDayOfCurrWeek) is first day of current month and doesn't start from Sunday
-    EDGE CASE 2: First day of current week on Sunday
-
-    Calculate first day of next week as start of the week of (firstDayOfCurrWeek + 1 week)
-    */
     const firstDayOfNextWeek = startOfWeek(
       add(firstDayOfCurrWeek, { weeks: 1 })
     );
-    const lastDayOfCurWeek = endOfWeek(firstDayOfCurrWeek);
-    // CASE 1: Month ends during the last week
-    if (getMonth(lastDayOfCurWeek) !== getMonth(currMonth)) {
-      setfirstDayOfCurrWeek(startOfMonth(lastDayOfCurWeek));
-      setCurrMonth(format(lastDayOfCurWeek, 'MMM-yyyy'));
-      // CASE 2: Month ends after the last week
-    } else if (getMonth(firstDayOfNextWeek) !== getMonth(currMonth)) {
-      setfirstDayOfCurrWeek(firstDayOfNextWeek);
+    setfirstDayOfCurrWeek(firstDayOfNextWeek);
+    if (getMonth(firstDayOfNextWeek) !== getMonth(currMonth))
       setCurrMonth(format(firstDayOfNextWeek, 'MMM-yyyy'));
-      // CASE 3: Still in the current month
-    } else {
-      setfirstDayOfCurrWeek(firstDayOfNextWeek);
-    }
   };
 
   const daysInWeek = eachDayOfInterval({
     start: firstDayOfCurrWeek,
-    end:
-      getMonth(endOfWeek(firstDayOfCurrWeek)) !== getMonth(currMonth)
-        ? endOfMonth(currMonth)
-        : endOfWeek(firstDayOfCurrWeek),
+    end: endOfWeek(firstDayOfCurrWeek),
   });
-  // const getPrevMonth = (event: React.MouseEvent<SVGSVGElement>) => {
-  //   event.preventDefault();
-  //   const firstDayOfPrevMonth = add(firstDayOfMonth, { months: -1 });
-  //   setCurrMonth(format(firstDayOfPrevMonth, 'MMM-yyyy'));
-  // };
-
-  // const getNextMonth = (event: React.MouseEvent<SVGSVGElement>) => {
-  //   event.preventDefault();
-  //   const firstDayOfNextMonth = add(firstDayOfMonth, { months: 1 });
-  //   setCurrMonth(format(firstDayOfNextMonth, 'MMM-yyyy'));
-  // };
 
   return (
     <div className='my-20 flex h-full w-full justify-end bg-yellow'>
       <div className='h-full w-[900px] bg-platinum'>
         <div className='flex items-center justify-between px-2 pt-2'>
           <div className='flex flex-col space-y-2 text-xl font-semibold'>
-            <span>{format(firstDayOfMonth, 'MMMM yyyy')}</span>
-            <span>Week {getWeekOfMonth(firstDayOfCurrWeek)}</span>
+            <div>
+              <span>{format(currMonth, 'MMMM yyyy')} </span>
+              <span
+                className={clsx({
+                  hidden:
+                    getMonth(firstDayOfCurrWeek) ===
+                    getMonth(endOfWeek(firstDayOfCurrWeek)),
+                })}
+              >
+                - {format(endOfWeek(firstDayOfCurrWeek), 'MMMM yyyy')}
+              </span>
+            </div>
+            <div>
+              <span>Week {getWeekOfMonth(firstDayOfCurrWeek)} </span>
+              <span
+                className={clsx({
+                  hidden:
+                    getMonth(firstDayOfCurrWeek) ===
+                    getMonth(endOfWeek(firstDayOfCurrWeek)),
+                })}
+              >
+                - Week {getWeekOfMonth(endOfWeek(firstDayOfCurrWeek))}
+              </span>
+            </div>
           </div>
           <div className='flex items-center justify-evenly gap-6   sm:gap-12'>
             <FaAngleLeft
