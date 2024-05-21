@@ -8,7 +8,7 @@ interface NavbarIconProps {
 }
 export default function NavbarIcon({ onClick = () => {} }: NavbarIconProps) {
   return (
-    <div className='outline-b-2 fixed z-10 h-10 w-full bg-onyx outline outline-platinum'>
+    <div className='outline-b-2 fixed z-20 h-10 w-full bg-onyx outline outline-platinum'>
       <IoReorderThreeOutline
         className='hover:bg-sky-700 h-10 w-10 cursor-pointer'
         onClick={onClick}

@@ -33,3 +33,58 @@ export default function Calendar() {
     </div>
   );
 }
+
+// return (
+//   <>
+//     {MAY_EVENTS.map((event) => {
+//       console.log('Event date: ', event.date);
+//       if (format(day, 'eee d') === event.date)
+//         return <span key={idx}>{event.title}</span>;
+//     })}
+// <div key={idx} className='flex'>
+//   <p
+//     key={idx}
+//     className={`flex h-8 w-8 cursor-pointer justify-center rounded-full font-semibold  hover:text-white ${
+//       isSameMonth(day, today)
+//         ? 'text-gray-900'
+//         : 'text-gray-400'
+//     } ${!isToday(day) && 'hover:bg-blue-500'} ${
+//       isToday(day) && 'bg-red-500 text-white'
+//     }`}
+//   >
+//     {format(day, 'eee d')}
+//   </p>
+// </div>
+//   </>
+// );
+
+{
+  /* <span>Week {getWeekOfMonth(firstDayOfCurrWeek)} </span>
+              <span
+                className={clsx({
+                  hidden:
+                    getMonth(firstDayOfCurrWeek) ===
+                    getMonth(endOfWeek(firstDayOfCurrWeek)),
+                })}
+              >
+                - Week {getWeekOfMonth(endOfWeek(firstDayOfCurrWeek))}
+              </span> */
+}
+
+// <div key={idx} className='flex w-full'>
+//   <div className='flex w-40'>
+//     <p
+//       className={`w-15 flex h-8 cursor-pointer justify-center rounded-full font-semibold  hover:text-white ${
+//         isSameMonth(day, today)
+//           ? 'text-gray-900'
+//           : 'text-gray-400'
+//       } ${!isToday(day) && 'hover:bg-blue-500'} ${
+//         isToday(day) && 'bg-red-500 text-white'
+//       }`}
+//     >
+//       {format(day, 'eee d')}
+//     </p>
+//   </div>
+
+//   <div className='italic'>No events on this day</div>
+// </div>
