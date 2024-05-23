@@ -24,7 +24,7 @@ function Calendar() {
     startOfWeek(today)
   );
 
-  const getPrevWeek = (event: React.MouseEvent<SVGSVGElement>) => {
+  const getPrevWeek = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const firstDayOfPrevWeek = startOfWeek(
       add(firstDayOfCurrWeek, { weeks: -1 })
@@ -34,7 +34,7 @@ function Calendar() {
       setCurrMonth(format(firstDayOfPrevWeek, 'MMM-yyyy'));
   };
 
-  const getNextWeek = (event: React.MouseEvent<SVGSVGElement>) => {
+  const getNextWeek = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const firstDayOfNextWeek = startOfWeek(
       add(firstDayOfCurrWeek, { weeks: 1 })
@@ -67,47 +67,44 @@ function Calendar() {
   });
 
   return (
-    <div className='z-0 my-20 flex h-full w-full justify-end bg-yellow'>
-      <div className='h-full w-[900px] bg-platinum'>
-        <div className='flex items-center justify-between px-2 pt-2'>
-          <div className='flex flex-col space-y-2 text-xl font-semibold'>
-            <div>
-              <span>{format(currMonth, 'MMMM ')} </span>
-              <span
-                className={clsx({
-                  hidden:
-                    getMonth(firstDayOfCurrWeek) ===
-                    getMonth(endOfWeek(firstDayOfCurrWeek)),
-                })}
-              >
-                - {format(endOfWeek(firstDayOfCurrWeek), 'MMMM ')}
-              </span>
-            </div>
-            <div>
-              <span>
-                {format(daysInWeek[0], 'eee d')} -{' '}
-                {format(daysInWeek[6], 'eee d')}
-              </span>
-            </div>
+    <div className='mx-auto max-w-[600px] bg-platinum'>
+      <div className='flex items-center justify-between px-2 pt-2'>
+        <div className='flex flex-col space-y-2 text-xl font-semibold'>
+          <div>
+            <span>{format(currMonth, 'MMMM ')} </span>
+            <span
+              className={clsx({
+                hidden:
+                  getMonth(firstDayOfCurrWeek) ===
+                  getMonth(endOfWeek(firstDayOfCurrWeek)),
+              })}
+            >
+              - {format(endOfWeek(firstDayOfCurrWeek), 'MMMM ')}
+            </span>
           </div>
-          <div className='flex items-center justify-evenly gap-6'>
-            <FaAngleLeft
-              className='h-6 w-6 cursor-pointer'
-              onClick={getPrevWeek}
-            />
-            <FaAngleRight
-              className='h-6 w-6 cursor-pointer'
-              onClick={getNextWeek}
-            />
+          <div>
+            <span>
+              {format(daysInWeek[0], 'eee d')} -{' '}
+              {format(daysInWeek[6], 'eee d')}
+            </span>
           </div>
         </div>
+        <div className='flex items-center justify-evenly gap-6'>
+          <button type='button' onClick={getPrevWeek}>
+            <FaAngleLeft className='h-6 w-6' />
+          </button>
+          <button type='button' onClick={getNextWeek}>
+            <FaAngleRight className='h-6 w-6' />
+          </button>
+        </div>
+      </div>
 
-        <hr className='my-5' />
-        <div className='flex w-full flex-col space-y-10 border p-2 '>
-          {test}
-          <div className={clsx({ hidden: !test.every((x) => x === null) })}>
-            No events this week
-          </div>
+      <hr className='my-5' />
+
+      <div className='flex space-x-2 border p-2 '>
+        {test}
+        <div className={clsx({ hidden: !test.every((x) => x === null) })}>
+          No events this week
         </div>
       </div>
     </div>

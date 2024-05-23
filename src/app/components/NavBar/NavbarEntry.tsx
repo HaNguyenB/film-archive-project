@@ -6,9 +6,14 @@ export function RedirectEntry(props: {
   link: string;
   icon: ReactNode;
   name: string;
+  onClick: () => void;
 }) {
   return (
-    <Link href={props.link} className='flex items-center space-x-2'>
+    <Link
+      href={props.link}
+      className='flex items-center space-x-2'
+      onClick={props.onClick}
+    >
       {props.icon} <span>{props.name}</span>
     </Link>
   );
@@ -24,6 +29,7 @@ interface DropdownEntryProps {
   icon: ReactNode;
   name: string;
   array: DropdownEntryItem[];
+  onClick: () => void;
 }
 
 export function DropdownEntry(props: DropdownEntryProps) {
@@ -51,6 +57,7 @@ export function DropdownEntry(props: DropdownEntryProps) {
             href={entry.link}
             className='flex items-center duration-200 hover:text-white'
             scroll={false}
+            onClick={props.onClick}
           >
             {entry.name}
           </Link>

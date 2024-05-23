@@ -25,9 +25,19 @@ const Navbar = () => {
                 className='nav-links w-24 font-medium capitalize text-rose duration-200 hover:text-white'
               >
                 {name === 'Archive' ? (
-                  <DropdownEntry icon={icon} name={name} array={ARCHIVELINKS} />
+                  <DropdownEntry
+                    icon={icon}
+                    name={name}
+                    array={ARCHIVELINKS}
+                    onClick={() => setOpen(false)}
+                  />
                 ) : (
-                  <RedirectEntry icon={icon} link={link} name={name} />
+                  <RedirectEntry
+                    icon={icon}
+                    link={link}
+                    name={name}
+                    onClick={() => setOpen(false)}
+                  />
                 )}
               </li>
             ))}

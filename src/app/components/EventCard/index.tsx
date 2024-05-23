@@ -9,22 +9,18 @@ interface EventCardProps {
 
 export default function EventCard(props: EventCardProps) {
   return (
-    <div className='relative flex max-w-md space-x-2 bg-white shadow-md'>
-      <div>{props.date}</div>
-      <div className='relative m-0 w-2/5 overflow-hidden bg-white bg-clip-border'>
-        <img
-          src={props.imgSrc}
-          alt='card-image'
-          className='h-full w-full object-cover'
-        />
+    <div className='h-80 w-48  bg-white pb-4 shadow-md'>
+      <div className='h-30 overflow-hidden'>
+        <img src={props.imgSrc} alt='' className='object-cover' />
       </div>
-      <div className='word-wrap m-w-full overflow-hidden break-words p-6'>
-        <h6 className='mb-4 block font-sans text-sm font-semibold uppercase leading-relaxed tracking-normal text-jet'>
-          {props.title}
-        </h6>
-        <p className='mb-8 block h-full w-full overflow-hidden break-words bg-rose font-sans text-sm font-normal leading-relaxed'>
-          {props.description}
-        </p>
+      <div className='space-y-2 p-3 font-sans '>
+        <div>{props.date}</div>
+        <div className='h-[136px] space-y-2 overflow-hidden text-sm '>
+          <h6 className='font-semibold uppercase leading-relaxed text-jet'>
+            {props.title}
+          </h6>
+          <p className=' mb-4 '>{props.description}</p>
+        </div>
       </div>
     </div>
   );

@@ -21,4 +21,10 @@ export const MAY_EVENTS = [
     date: format(new Date('5-17-2024'), 'eee d'),
     key: Math.random(),
   },
+  {
+    title: 'Student Screening',
+    description: 'Apollo Theater\n Sunday May 12 \n At 7PM',
+    date: format(new Date('5-12-2024'), 'eee d'),
+    key: Math.random(),
+  },
 ];
