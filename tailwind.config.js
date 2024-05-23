@@ -1,3 +1,5 @@
+// const { ms } = require('date-fns/locale');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -17,6 +19,15 @@ module.exports = {
       rose: '#b19691',
       onyx: '#45424b',
       jet: '#38353b',
+      yellow: 'yellow',
+    },
+    extend: {
+      transitionProperty: {
+        'max-height': 'max-height',
+      },
+      transitionDuration: {
+        DEFAULT: '500ms',
+      },
     },
   },
   plugins: [],

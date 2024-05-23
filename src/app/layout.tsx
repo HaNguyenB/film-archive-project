@@ -25,8 +25,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={roboto.className}>
-        {children}
         <Navbar />
+        <main className='py-10'>{children}</main>
         <Footer />
       </body>
     </html>
