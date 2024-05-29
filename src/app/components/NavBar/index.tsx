@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import NavbarIcon from './NavbarIcon';
+import NavBarIcon from './NavBarIcon';
 import { NAVLINKS, ARCHIVELINKS } from './constants';
 import { RedirectEntry, DropdownEntry } from './NavbarEntry';
 
@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <NavbarIcon onClick={() => setOpen(!opened)} />
+      <NavBarIcon onClick={() => setOpen(!opened)} />
       <nav
         className={clsx(
           'w-50 outline-l-2 fixed z-10 flex h-full flex-col bg-jet outline outline-platinum duration-300 ease-in-out',
