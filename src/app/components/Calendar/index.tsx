@@ -67,7 +67,7 @@ function Calendar() {
   });
 
   return (
-    <div className='mx-auto max-w-[600px] bg-platinum'>
+    <div className='mx-auto w-[600px] bg-platinum'>
       <div className='flex items-center justify-between px-2 pt-2'>
         <div className='flex flex-col space-y-2 text-xl font-semibold'>
           <div>

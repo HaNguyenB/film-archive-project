@@ -9,7 +9,9 @@ export default function Home() {
   useChangeTabName('Home');
   return (
     <>
-      <Calendar />
+      <div className='flex-grow'>
+        <Calendar />
+      </div>
       <InterestForm />
     </>
   );

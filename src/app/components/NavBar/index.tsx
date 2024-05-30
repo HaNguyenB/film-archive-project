@@ -1,20 +1,21 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
-import NavBarIcon from './NavBarIcon';
 import { NAVLINKS, ARCHIVELINKS } from './constants';
 import { RedirectEntry, DropdownEntry } from './NavbarEntry';
 
-const Navbar = () => {
-  const [opened, setOpen] = useState(false);
+interface NavbarProps {
+  isOpened: boolean;
+  onNavbarIconClick: () => void;
+}
 
+const Navbar = ({ isOpened, onNavbarIconClick }: NavbarProps) => {
   return (
     <div>
-      <NavBarIcon onClick={() => setOpen(!opened)} />
       <nav
         className={clsx(
-          'w-50 outline-l-2 fixed z-10 flex h-full flex-col bg-jet outline outline-platinum duration-300 ease-in-out',
-          { 'translate-x-0 ': opened, '-translate-x-full': !opened }
+          'w-50 fixed z-10 flex h-full flex-col border-r-2 border-platinum bg-jet  duration-300 ease-in-out',
+          { 'translate-x-0 ': isOpened, '-translate-x-full': !isOpened }
         )}
       >
         <div className='mx-6 h-full py-20'>
@@ -29,14 +30,14 @@ const Navbar = () => {
                     icon={icon}
                     name={name}
                     array={ARCHIVELINKS}
-                    onClick={() => setOpen(false)}
+                    onClick={onNavbarIconClick}
                   />
                 ) : (
                   <RedirectEntry
                     icon={icon}
                     link={link}
                     name={name}
-                    onClick={() => setOpen(false)}
+                    onClick={onNavbarIconClick}
                   />
                 )}
               </li>

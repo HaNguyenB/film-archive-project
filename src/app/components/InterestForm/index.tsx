@@ -39,7 +39,7 @@ export default function InterestForm() {
   };
 
   return (
-    <div className='absolute inset-x-0 bottom-10 mx-auto h-32 max-w-md bg-platinum'>
+    <div className='mx-auto mt-5 h-32 w-[400px] bg-platinum'>
       <div className='mx-auto max-w-[300px] py-5'>
         <h2 className='pb-2 text-center'> Sign up for our Mailing List</h2>
         <form
@@ -50,14 +50,24 @@ export default function InterestForm() {
           // Need more configuration with Google Sheet API to streamline the email to the spreadsheet
           action='https://script.google.com/macros/s/AKfycby2A3IjHntlDCFifDKoVJPutNEeeNfkg0nUb5ohu6P391e_Dze4DemdVUXWn_HuH68P/exec'
         >
-          <input
-            type='email'
-            placeholder='Enter your email'
-            value={values.email}
-            onChange={setEmail}
-            name='Email'
-            className='text-sm'
-          ></input>
+          <div className='relative'>
+            <input
+              type='email'
+              value={values.email}
+              onChange={setEmail}
+              name='Email'
+              className='peer rounded-sm px-2.5 pb-2.5 pt-5 text-sm focus:outline-none focus:ring-0 dark:text-white'
+              placeholder=' '
+              id='floating_filled'
+            ></input>
+            <label
+              htmlFor='floating_filled'
+              className='absolute start-2.5 top-4 origin-[0] text-sm duration-300 peer-focus:-translate-y-4 peer-focus:scale-75'
+            >
+              Enter your email
+            </label>
+          </div>
+
           <button
             type='submit'
             className='rounded-sm bg-rose px-4 py-2 font-bold text-black hover:bg-platinum'
