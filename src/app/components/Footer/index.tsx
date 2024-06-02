@@ -24,7 +24,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='fixed inset-x-0 bottom-0 z-20 flex h-10 w-full items-center justify-between border-t-2 border-solid border-platinum bg-onyx'>
+    <footer className='fixed inset-x-0 bottom-0 z-20 flex h-10 w-full items-center justify-between border-t-2 border-solid border-rose bg-jet'>
       <ul className='flex items-center'>
         {links.map(({ id, name, link }) => (
           <li

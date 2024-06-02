@@ -6,5 +6,5 @@ html,
 body {
   /* background-color: #38353b; */
   height: 100%;
-  @apply bg-rose;
+  @apply bg-onyx;
 }

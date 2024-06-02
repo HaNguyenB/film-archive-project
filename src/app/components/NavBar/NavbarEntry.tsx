@@ -30,6 +30,7 @@ interface DropdownEntryProps {
   name: string;
   array: DropdownEntryItem[];
   onClick: () => void;
+  pathname: string;
 }
 
 export function DropdownEntry(props: DropdownEntryProps) {
@@ -55,7 +56,13 @@ export function DropdownEntry(props: DropdownEntryProps) {
           <Link
             key={entry.id}
             href={entry.link}
-            className='flex items-center duration-200 hover:text-white'
+            className={clsx(
+              {
+                'font-black text-white underline underline-offset-[5px]':
+                  props.pathname === entry.link,
+              },
+              'flex items-center duration-200 hover:text-clamshell'
+            )}
             scroll={false}
             onClick={props.onClick}
           >
