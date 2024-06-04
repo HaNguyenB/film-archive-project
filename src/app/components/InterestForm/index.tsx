@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { useState } from 'react';
 
 // const isValid = (email: string): boolean =>
@@ -40,9 +41,8 @@ export default function InterestForm() {
 
   return (
     <div className='mt-5 flex h-40 w-full flex-col border-t-2 border-rose bg-onyx'>
-      <div className='mx-auto w-1/2 space-y-4 py-5'>
+      <div className='mx-auto w-1/2 min-w-[300px] space-y-4 py-5'>
         <h2 className='text-center text-lg font-semibold text-rose '>
-          {' '}
           Sign up for our Mailing List
         </h2>
         <form
@@ -59,15 +59,20 @@ export default function InterestForm() {
               value={values.email}
               onChange={setEmail}
               name='Email'
-              className='peer w-full grow rounded-sm px-2.5 pb-2.5 pt-5 text-sm focus:outline-none focus:ring-0 dark:text-white'
+              className='peer w-full grow rounded-sm px-2.5 pb-2.5 pt-5 text-sm focus:outline-none focus:ring-0'
               placeholder=' '
               id='floating_filled'
             ></input>
             <label
               htmlFor='floating_filled'
-              className='absolute start-2.5 top-4 origin-[0] text-sm duration-300 peer-focus:-translate-y-4 peer-focus:scale-75'
+              className={clsx(
+                'absolute start-2.5 top-4 origin-[0] text-sm duration-300 peer-focus:-translate-y-4 peer-focus:scale-75',
+                {
+                  '-translate-y-4 scale-75': values.email,
+                }
+              )}
             >
-              Enter your email
+              Email address
             </label>
           </div>
 

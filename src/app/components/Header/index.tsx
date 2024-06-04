@@ -9,7 +9,10 @@ export default function Header() {
   const wrapperRef = useRef(null);
   useClickOutside(wrapperRef, () => setOpen(false));
   return (
-    <header className='fixed z-20 h-10 w-full border-b-2 border-rose bg-jet'>
+    <header
+      ref={wrapperRef}
+      className='fixed z-20 h-10 w-full border-b-2 border-rose bg-jet'
+    >
       <IoReorderThreeOutline
         className='h-10 w-10 cursor-pointer text-rose'
         onClick={() => setOpen(!opened)}

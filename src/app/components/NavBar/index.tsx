@@ -14,7 +14,7 @@ const Navbar = ({ isOpened, onNavbarIconClick }: NavbarProps) => {
   const pathname = usePathname();
 
   return (
-    <div>
+    <div data-testid='navbar'>
       <nav
         className={clsx(
           'w-50 fixed z-10 flex h-full flex-col border-r-2 border-rose bg-jet  duration-300 ease-in-out',
@@ -22,7 +22,7 @@ const Navbar = ({ isOpened, onNavbarIconClick }: NavbarProps) => {
         )}
       >
         <div className='mx-6 h-full py-10'>
-          <ul className='space-y-4'>
+          <ul className='space-y-3'>
             {NAVLINKS.map(({ id, name, link, icon }) => (
               <li
                 key={id}

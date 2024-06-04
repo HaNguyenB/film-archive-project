@@ -36,7 +36,7 @@ interface DropdownEntryProps {
 export function DropdownEntry(props: DropdownEntryProps) {
   const [dropDownVisibility, setdropDownVisibility] = useState(false);
   return (
-    <div className={clsx({ 'space-y-4': dropDownVisibility })}>
+    <div className={clsx({ 'space-y-3': dropDownVisibility })}>
       <button
         className='flex items-center space-x-2'
         onClick={() => setdropDownVisibility((value) => !value)}
@@ -45,7 +45,7 @@ export function DropdownEntry(props: DropdownEntryProps) {
       </button>
       <div
         className={clsx(
-          'ml-6 space-y-2 overflow-hidden text-rose transition-all ease-in-out',
+          'ml-6 space-y-3 overflow-hidden text-rose transition-all ease-in-out',
           {
             'max-h-40 ': dropDownVisibility,
             'invisible max-h-0 opacity-0': !dropDownVisibility,
