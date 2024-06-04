@@ -29,11 +29,11 @@ export const ARCHIVELINKS = [
   {
     id: 1,
     name: 'CINE291',
-    link: '/archive/classes/cine291',
+    link: '/archive/cine291',
   },
   {
     id: 2,
     name: 'CINE326',
-    link: '/archive/classes/cine326',
+    link: '/archive/cine326',
   },
 ];

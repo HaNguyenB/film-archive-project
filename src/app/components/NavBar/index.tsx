@@ -1,42 +1,53 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
+import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-import NavbarIcon from './NavbarIcon';
 import { NAVLINKS, ARCHIVELINKS } from './constants';
 import { RedirectEntry, DropdownEntry } from './NavbarEntry';
 
-const Navbar = () => {
-  const [opened, setOpen] = useState(false);
+interface NavbarProps {
+  isOpened: boolean;
+  onNavbarIconClick: () => void;
+}
+
+const Navbar = ({ isOpened, onNavbarIconClick }: NavbarProps) => {
+  const pathname = usePathname();
 
   return (
-    <div>
-      <NavbarIcon onClick={() => setOpen(!opened)} />
+    <div data-testid='navbar'>
       <nav
         className={clsx(
-          'w-50 outline-l-2 fixed z-10 flex h-full flex-col bg-jet outline outline-platinum duration-300 ease-in-out',
-          { 'translate-x-0 ': opened, '-translate-x-full': !opened }
+          'w-50 fixed z-10 flex h-full flex-col border-r-2 border-rose bg-jet  duration-300 ease-in-out',
+          { 'translate-x-0 ': isOpened, '-translate-x-full': !isOpened }
         )}
       >
-        <div className='mx-6 h-full py-20'>
-          <ul className='space-y-4'>
+        <div className='mx-6 h-full py-10'>
+          <ul className='space-y-3'>
             {NAVLINKS.map(({ id, name, link, icon }) => (
               <li
                 key={id}
-                className='nav-links w-24 font-medium capitalize text-rose duration-200 hover:text-white'
+                className={clsx(
+                  {
+                    'font-black text-white underline underline-offset-[5px]':
+                      pathname === link,
+                  },
+                  'nav-links w-24 capitalize text-rose duration-200 hover:text-clamshell'
+                )}
               >
                 {name === 'Archive' ? (
                   <DropdownEntry
                     icon={icon}
                     name={name}
                     array={ARCHIVELINKS}
-                    onClick={() => setOpen(false)}
+                    onClick={onNavbarIconClick}
+                    pathname={pathname}
                   />
                 ) : (
                   <RedirectEntry
                     icon={icon}
                     link={link}
                     name={name}
-                    onClick={() => setOpen(false)}
+                    onClick={onNavbarIconClick}
                   />
                 )}
               </li>

@@ -19,9 +19,14 @@ module.exports = {
       rose: '#b19691',
       onyx: '#45424b',
       jet: '#38353b',
-      yellow: 'yellow',
+      greygoose: '#f5f5dc',
+      clamshell: '#d0b3a8',
     },
     extend: {
+      fontFamily: {
+        raleway: 'var(--raleway-font)',
+        manrope: 'var(--manrope-font)',
+      },
       transitionProperty: {
         'max-height': 'max-height',
       },

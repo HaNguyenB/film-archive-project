@@ -67,7 +67,7 @@ function Calendar() {
   });
 
   return (
-    <div className='mx-auto max-w-[600px] bg-platinum'>
+    <div className='mx-auto w-[600px] max-w-full border-2 bg-platinum'>
       <div className='flex items-center justify-between px-2 pt-2'>
         <div className='flex flex-col space-y-2 text-xl font-semibold'>
           <div>
@@ -90,18 +90,18 @@ function Calendar() {
           </div>
         </div>
         <div className='flex items-center justify-evenly gap-6'>
-          <button type='button' onClick={getPrevWeek}>
+          <button type='button' onClick={getPrevWeek} title='Previous Week'>
             <FaAngleLeft className='h-6 w-6' />
           </button>
-          <button type='button' onClick={getNextWeek}>
+          <button type='button' onClick={getNextWeek} title='Next Week'>
             <FaAngleRight className='h-6 w-6' />
           </button>
         </div>
       </div>
 
-      <hr className='my-5' />
+      <hr className='my-5 border' />
 
-      <div className='flex space-x-2 border p-2 '>
+      <div className='flex space-x-2 border-t-2 p-2 '>
         {test}
         <div className={clsx({ hidden: !test.every((x) => x === null) })}>
           No events this week
