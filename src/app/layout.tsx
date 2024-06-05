@@ -34,7 +34,9 @@ export default function RootLayout({
     <html lang='en' className={`${raleway.variable}, ${manrope.variable}`}>
       <body className={openSans.className}>
         <Header />
-        <main className='flex min-h-full flex-col py-10'>{children}</main>
+        <main className='flex min-h-full flex-col pt-10 sm:pb-10'>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

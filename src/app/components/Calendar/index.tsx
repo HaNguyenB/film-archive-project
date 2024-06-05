@@ -69,14 +69,14 @@ function Calendar() {
   });
 
   return (
-    <div className='justify-between px-10 py-6 md:flex '>
+    <div className=' flex flex-col justify-between gap-4 px-10 py-6 md:flex-row'>
       <h1 className='flex space-x-4 font-manrope text-3xl font-semibold uppercase tracking-wide text-rose'>
         <span>
           <FaCalendar />
         </span>
         <span>Upcoming events</span>
       </h1>
-      <div className='w-[600px] max-w-full border-2 bg-platinum'>
+      <div className='w-full border-2 bg-platinum md:w-[550px]'>
         <div className='flex items-center justify-between px-2 pt-2'>
           <div className='flex flex-col space-y-2 text-xl font-semibold'>
             <div>

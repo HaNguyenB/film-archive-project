@@ -40,7 +40,7 @@ export default function InterestForm() {
   };
 
   return (
-    <div className='flex h-40 w-full flex-col'>
+    <div className='my-auto flex h-40 w-full flex-col'>
       <div className='mx-auto w-1/2 min-w-[300px] space-y-4 py-5'>
         <h2 className='text-center text-lg font-semibold text-rose '>
           Sign up for our Mailing List
