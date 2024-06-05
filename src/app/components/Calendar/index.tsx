@@ -8,7 +8,7 @@ import {
   getMonth,
   eachDayOfInterval,
 } from 'date-fns';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
+import { FaAngleLeft, FaAngleRight, FaCalendar } from 'react-icons/fa6';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { MAY_EVENTS } from '../EventCard/data';
@@ -48,12 +48,13 @@ function Calendar() {
     start: firstDayOfCurrWeek,
     end: endOfWeek(firstDayOfCurrWeek),
   });
-
+  let eventCount = 0;
   const test = daysInWeek.map((day, idx) => {
     const res = MAY_EVENTS.find((event) => {
       if (format(day, 'eee d') === event.date) return event;
     });
-    if (res !== undefined)
+    if (res !== undefined) {
+      eventCount = eventCount + 1;
       return (
         <EventCard
           date={res.date}
@@ -63,48 +64,61 @@ function Calendar() {
           description={res.description}
         ></EventCard>
       );
+    }
     return null;
   });
 
   return (
-    <div className='mx-auto w-[600px] max-w-full border-2 bg-platinum'>
-      <div className='flex items-center justify-between px-2 pt-2'>
-        <div className='flex flex-col space-y-2 text-xl font-semibold'>
-          <div>
-            <span>{format(currMonth, 'MMMM ')} </span>
-            <span
-              className={clsx({
-                hidden:
-                  getMonth(firstDayOfCurrWeek) ===
-                  getMonth(endOfWeek(firstDayOfCurrWeek)),
-              })}
-            >
-              - {format(endOfWeek(firstDayOfCurrWeek), 'MMMM ')}
-            </span>
+    <div className='justify-between px-10 py-6 md:flex '>
+      <h1 className='flex space-x-4 font-manrope text-3xl font-semibold uppercase tracking-wide text-rose'>
+        <span>
+          <FaCalendar />
+        </span>
+        <span>Upcoming events</span>
+      </h1>
+      <div className='w-[600px] max-w-full border-2 bg-platinum'>
+        <div className='flex items-center justify-between px-2 pt-2'>
+          <div className='flex flex-col space-y-2 text-xl font-semibold'>
+            <div>
+              <span>{format(currMonth, 'MMMM ')} </span>
+              <span
+                className={clsx({
+                  hidden:
+                    getMonth(firstDayOfCurrWeek) ===
+                    getMonth(endOfWeek(firstDayOfCurrWeek)),
+                })}
+              >
+                - {format(endOfWeek(firstDayOfCurrWeek), 'MMMM ')}
+              </span>
+            </div>
+            <div>
+              <span>
+                {format(daysInWeek[0], 'eee d')} -{' '}
+                {format(daysInWeek[6], 'eee d')}
+              </span>
+            </div>
           </div>
-          <div>
-            <span>
-              {format(daysInWeek[0], 'eee d')} -{' '}
-              {format(daysInWeek[6], 'eee d')}
-            </span>
+          <div className='flex items-center justify-evenly gap-6'>
+            <button type='button' onClick={getPrevWeek} title='Previous Week'>
+              <FaAngleLeft className='h-6 w-6' />
+            </button>
+            <button type='button' onClick={getNextWeek} title='Next Week'>
+              <FaAngleRight className='h-6 w-6' />
+            </button>
           </div>
         </div>
-        <div className='flex items-center justify-evenly gap-6'>
-          <button type='button' onClick={getPrevWeek} title='Previous Week'>
-            <FaAngleLeft className='h-6 w-6' />
-          </button>
-          <button type='button' onClick={getNextWeek} title='Next Week'>
-            <FaAngleRight className='h-6 w-6' />
-          </button>
-        </div>
-      </div>
 
-      <hr className='my-5 border' />
+        <hr className='my-5 border' />
 
-      <div className='flex space-x-2 border-t-2 p-2 '>
-        {test}
-        <div className={clsx({ hidden: !test.every((x) => x === null) })}>
-          No events this week
+        <div
+          className={clsx('flex space-x-2  border-t-2 p-2', {
+            'overflow-scroll': eventCount > 3,
+          })}
+        >
+          {test}
+          <div className={clsx({ hidden: !test.every((x) => x === null) })}>
+            No events this week
+          </div>
         </div>
       </div>
     </div>
