@@ -70,7 +70,7 @@ function Calendar() {
 
   return (
     <div className=' flex flex-col justify-between gap-4 px-10 py-6 md:flex-row'>
-      <h1 className='flex space-x-4 font-manrope text-3xl font-semibold uppercase tracking-wide text-rose'>
+      <h1 className='flex gap-4 font-manrope text-3xl font-semibold uppercase tracking-wide text-rose'>
         <span>
           <FaCalendar />
         </span>

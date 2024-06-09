@@ -58,7 +58,7 @@ export function DropdownEntry(props: DropdownEntryProps) {
             href={entry.link}
             className={clsx(
               {
-                'font-black text-white underline underline-offset-[5px]':
+                'font-bold text-white underline underline-offset-[5px]':
                   props.pathname === entry.link,
               },
               'flex items-center duration-200 hover:text-clamshell'

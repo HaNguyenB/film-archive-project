@@ -3,6 +3,7 @@ import { FaInstagram } from 'react-icons/fa';
 import Link from 'next/link';
 
 import { ACADEMIC_PROGRAM, PEOPLE, INSTAGRAM } from './constants';
+import clsx from 'clsx';
 
 export default function Footer() {
   const links: { id: number; name?: string; link: string }[] = [
@@ -24,7 +25,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='inset-x-0 bottom-0 z-20 flex h-44 w-full flex-col items-center justify-between gap-4 border-t-2 border-solid border-rose bg-jet py-4 sm:fixed sm:h-10 sm:flex-row'>
+    <footer
+      className={clsx(
+        'inset-x-0 bottom-0 z-20 flex h-44 w-full flex-col items-center justify-between',
+        'gap-4 border-t-2 border-solid border-rose bg-jet py-4 sm:fixed sm:h-10 sm:flex-row'
+      )}
+    >
       <ul className='flex flex-col items-center gap-4 sm:flex-row'>
         {links.map(({ id, name, link }) => (
           <li
