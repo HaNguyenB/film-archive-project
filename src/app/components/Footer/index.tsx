@@ -3,6 +3,7 @@ import { FaInstagram } from 'react-icons/fa';
 import Link from 'next/link';
 
 import { ACADEMIC_PROGRAM, PEOPLE, INSTAGRAM } from './constants';
+import clsx from 'clsx';
 
 export default function Footer() {
   const links: { id: number; name?: string; link: string }[] = [
@@ -24,8 +25,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='fixed inset-x-0 bottom-0 z-20 flex h-10 w-full items-center justify-between border-t-2 border-solid border-rose bg-jet'>
-      <ul className='flex items-center'>
+    <footer
+      className={clsx(
+        'inset-x-0 bottom-0 z-20 flex h-44 w-full flex-col items-center justify-between',
+        'gap-4 border-t-2 border-solid border-rose bg-jet py-4 sm:fixed sm:h-10 sm:flex-row'
+      )}
+    >
+      <ul className='flex flex-col items-center gap-4 sm:flex-row'>
         {links.map(({ id, name, link }) => (
           <li
             key={id}
@@ -35,14 +41,13 @@ export default function Footer() {
               <Link href={link}>{name}</Link>
             ) : (
               <a href={link}>
-                {' '}
-                <FaInstagram />{' '}
+                <FaInstagram />
               </a>
             )}
           </li>
         ))}
       </ul>
-      <h5 className='px-4 text-sm text-[#C89F9C]'>Made by Ha Nguyen</h5>
+      <h5 className='px-4 text-sm text-rose'>Made by Ha Nguyen</h5>
     </footer>
   );
 }

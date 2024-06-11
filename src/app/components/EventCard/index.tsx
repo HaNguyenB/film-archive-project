@@ -9,7 +9,7 @@ interface EventCardProps {
 
 export default function EventCard(props: EventCardProps) {
   return (
-    <div className='h-80 w-48  bg-white pb-4 shadow-md'>
+    <div className=' h-80 w-48 min-w-48 bg-white pb-4 shadow-md'>
       <div className='h-30 overflow-hidden'>
         <img src={props.imgSrc} alt='' className='object-cover' />
       </div>

@@ -28,7 +28,7 @@ const Navbar = ({ isOpened, onNavbarIconClick }: NavbarProps) => {
                 key={id}
                 className={clsx(
                   {
-                    'font-black text-white underline underline-offset-[5px]':
+                    'font-bold text-white underline underline-offset-[5px]':
                       pathname === link,
                   },
                   'nav-links w-24 capitalize text-rose duration-200 hover:text-clamshell'
