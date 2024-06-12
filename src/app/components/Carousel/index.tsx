@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 
 // Data
 import data from './data.json';
-import { CgMoreO } from 'react-icons/cg';
+
 import { IoChevronBackCircle, IoChevronForwardCircle } from 'react-icons/io5';
 import { BiSolidCameraMovie } from 'react-icons/bi';
 
@@ -10,6 +10,9 @@ const Carousel = () => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef<HTMLInputElement>(null);
+  const carouselItem = useRef<HTMLInputElement>(null);
+
+  console.log(currentIndex);
 
   const movePrev = () => {
     if (currentIndex > 0) {
@@ -20,8 +23,12 @@ const Carousel = () => {
   const moveNext = () => {
     if (
       carousel.current !== null &&
-      carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
+      256 * currentIndex <= maxScrollWidth.current
     ) {
+      console.log(carousel.current.offsetWidth);
+      console.log('maxscroll', maxScrollWidth);
+      console.log(carouselItem.current?.offsetWidth);
+
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
@@ -87,12 +94,13 @@ const Carousel = () => {
         </div>
         <div
           ref={carousel}
-          className='carousel-container relative z-0 flex touch-pan-x snap-x snap-mandatory gap-5 overflow-hidden scroll-smooth'
+          className='carousel-container relative z-0 flex touch-pan-x snap-x snap-mandatory gap-2 overflow-hidden scroll-smooth'
         >
           {data.resources.map((resource, index) => {
             return (
               <div
                 key={index}
+                ref={carouselItem}
                 className='carousel-item relative h-64 w-64 scale-95 snap-center sm:scale-100'
               >
                 <a
@@ -109,9 +117,6 @@ const Carousel = () => {
               </div>
             );
           })}
-          <div className='carousel-item relative h-full w-full scale-125 snap-center'>
-            <CgMoreO className='scale-125' />
-          </div>
         </div>
       </div>
     </div>

@@ -76,7 +76,7 @@ function Calendar() {
         </span>
         <span>Upcoming events</span>
       </h1>
-      <div className='w-full border-2 bg-platinum md:w-[550px]'>
+      <div className='w-full border-2 bg-platinum md:w-[550px] md:min-w-[430px]'>
         <div className='flex items-center justify-between px-2 pt-2'>
           <div className='flex flex-col space-y-2 text-xl font-semibold'>
             <div>
@@ -111,12 +111,16 @@ function Calendar() {
         <hr className='my-5 border' />
 
         <div
-          className={clsx('flex space-x-2  border-t-2 p-2', {
+          className={clsx('flex space-x-2 border-t-2 p-2', {
             'overflow-scroll': eventCount > 3,
           })}
         >
           {test}
-          <div className={clsx({ hidden: !test.every((x) => x === null) })}>
+          <div
+            className={clsx('md:h-[320px]', {
+              hidden: !test.every((x) => x === null),
+            })}
+          >
             No events this week
           </div>
         </div>
