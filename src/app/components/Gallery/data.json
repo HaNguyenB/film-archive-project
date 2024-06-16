@@ -1,0 +1,62 @@
+{
+  "leftRow": [
+    [
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"
+      },
+      {
+        "title": "image2",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
+      },
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
+      }
+    ],
+    [
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg"
+      },
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg"
+      },
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg"
+      }
+    ]
+  ],
+  "rightRow": [
+    [
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
+      },
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
+      },
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
+      }
+    ],
+    [
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"
+      },
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+      },
+      {
+        "title": "image1",
+        "imageURL": "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
+      }
+    ]
+  ]
+}

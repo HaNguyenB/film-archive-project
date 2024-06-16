@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 
 // Data
 import data from './data.json';
-import { CgMoreO } from 'react-icons/cg';
+
 import { IoChevronBackCircle, IoChevronForwardCircle } from 'react-icons/io5';
 import { BiSolidCameraMovie } from 'react-icons/bi';
 
@@ -32,9 +32,12 @@ const Carousel = () => {
     }
 
     if (direction === 'next' && carousel.current !== null) {
-      return (
-        carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
-      );
+      if (carousel.current.offsetWidth < 560)
+        return currentIndex + 1 >= data.resources.length;
+      else
+        return (
+          carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
+        );
     }
 
     return false;
@@ -54,11 +57,11 @@ const Carousel = () => {
 
   return (
     <div className='carousel px-10 py-5'>
-      <h2 className='flex gap-4 text-3xl font-semibold uppercase leading-8 text-rose'>
-        <span>
+      <h2 className='flex w-full gap-4 text-3xl font-semibold uppercase leading-8 text-rose'>
+        <span className='text-4xl'>
           <BiSolidCameraMovie />
         </span>
-        <div className='flex flex-col  overflow-clip break-words sm:inline sm:flex-row'>
+        <div className='flex flex-col overflow-clip break-words sm:inline sm:flex-row'>
           <span>Check out student-host screening at&nbsp;</span>
           <a
             className=' duration-200 hover:text-white '
@@ -68,18 +71,18 @@ const Carousel = () => {
           </a>
         </div>
       </h2>
-      <div className='relative overflow-hidden pt-5'>
-        <div className='top left absolute flex h-full w-full justify-between px-4'>
+      <div className='overflow-hidde relative flex flex-col space-y-1 '>
+        <div className='self-end px-2'>
           <button
             onClick={movePrev}
-            className='z-10 m-0 scale-[3] p-0 text-center text-white opacity-100 transition-all duration-300 ease-in-out hover:opacity-100 disabled:cursor-not-allowed disabled:opacity-50'
+            className='z-10 m-0 p-0 text-center text-5xl text-platinum opacity-75 transition-all duration-300 ease-in-out hover:opacity-100 disabled:cursor-not-allowed disabled:opacity-50'
             disabled={isDisabled('prev')}
           >
             <IoChevronBackCircle />
           </button>
           <button
             onClick={moveNext}
-            className='z-10 m-0 scale-[3] p-0 text-white opacity-100 transition-all duration-300 ease-in-out hover:opacity-100 disabled:cursor-not-allowed disabled:opacity-50'
+            className='z-10 m-0 p-0 text-5xl text-platinum opacity-75 transition-all duration-300 ease-in-out hover:opacity-100 disabled:cursor-not-allowed disabled:opacity-50'
             disabled={isDisabled('next')}
           >
             <IoChevronForwardCircle />
@@ -87,31 +90,24 @@ const Carousel = () => {
         </div>
         <div
           ref={carousel}
-          className='carousel-container relative z-0 flex touch-pan-x snap-x snap-mandatory gap-5 overflow-hidden scroll-smooth'
+          className='carousel-container relative z-0 flex h-full w-full touch-pan-x snap-x snap-mandatory overflow-hidden scroll-smooth'
         >
           {data.resources.map((resource, index) => {
             return (
               <div
                 key={index}
-                className='carousel-item relative h-64 w-64 scale-95 snap-center sm:scale-100'
+                className='carousel-item md:1/4 relative w-full shrink-0 snap-center px-2 sm:w-1/3 lg:w-1/5 '
               >
                 <a
                   href={resource.link}
+                  target='_blank'
                   className='z-0 block aspect-square h-full w-full bg-cover bg-left-top bg-no-repeat bg-origin-padding'
                   style={{ backgroundImage: `url(${resource.imageUrl || ''})` }}
-                >
-                  <img
-                    src={resource.imageUrl || ''}
-                    alt={resource.title}
-                    className='hidden aspect-square w-full'
-                  />
-                </a>
+                  rel='noreferrer'
+                ></a>
               </div>
             );
           })}
-          <div className='carousel-item relative h-full w-full scale-125 snap-center'>
-            <CgMoreO className='scale-125' />
-          </div>
         </div>
       </div>
     </div>
