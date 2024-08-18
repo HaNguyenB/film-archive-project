@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 // REFERENCE: https://github.com/VivekAlhat/Tailwind-Calendar/blob/main/src/App.tsx
 import {
   add,
@@ -69,7 +70,7 @@ function Calendar() {
   });
 
   return (
-    <div className=' flex flex-col justify-between gap-4 px-10 py-6 md:flex-row'>
+    <div className=' flex flex-col justify-center gap-10  px-10 py-6 md:flex-row'>
       <h1 className='flex gap-4 font-manrope text-3xl font-semibold uppercase tracking-wide text-rose'>
         <span>
           <FaCalendar />
